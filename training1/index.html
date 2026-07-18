@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>মহাদেবপুর আইটি প্রশিক্ষণ | Enterkey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #06245c;
+      --navy-2: #0b3d7d;
+      --teal: #089da2;
+      --cyan: #4db8cf;
+      --green: #0f9f6e;
+      --amber: #f5a524;
+      --pink: #e84b7b;
+      --ink: #101828;
+      --muted: #5b687a;
+      --line: #dce8ef;
+      --soft: #f4f9fb;
+      --white: #ffffff;
+      --shadow: 0 22px 70px rgba(6, 36, 92, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(135deg, rgba(8, 157, 162, 0.08), transparent 28%),
+        linear-gradient(225deg, rgba(6, 36, 92, 0.08), transparent 24%),
+        #f7fbfd;
+      font-family: "Hind Siliguri", "Noto Sans Bengali", system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 76px;
+      padding: 14px clamp(18px, 5vw, 64px);
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid rgba(220, 232, 239, 0.95);
+      backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: auto;
+      height: 52px;
+      max-width: min(260px, 58vw);
+      display: block;
+      flex: 0 0 auto;
+      object-fit: contain;
+    }
+
+    .brand-copy {
+      display: block;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--navy);
+      font-size: 13px;
+      line-height: 1.1;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      font-weight: 900;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      color: var(--white);
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+      box-shadow: 0 14px 30px rgba(6, 36, 92, 0.18);
+    }
+
+    .btn-light {
+      color: var(--navy);
+      background: var(--white);
+      border-color: var(--line);
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(360px, 1.08fr);
+      gap: clamp(24px, 4vw, 54px);
+      align-items: center;
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: clamp(34px, 5vw, 70px) 0 38px;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      min-width: 0;
+    }
+
+    .label-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 7px 12px;
+      color: var(--navy);
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 900;
+      box-shadow: 0 10px 24px rgba(6, 36, 92, 0.08);
+    }
+
+    .pill strong {
+      color: var(--teal);
+      font-weight: 900;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(38px, 5.2vw, 68px);
+      line-height: 1.12;
+      font-weight: 900;
+      letter-spacing: 0;
+      overflow-wrap: break-word;
+    }
+
+    .hero-copy h1 span {
+      display: block;
+      color: var(--teal);
+    }
+
+    .hero-copy h1 .title-line {
+      color: var(--navy);
+    }
+
+    .hero-copy h1 .campaign-name {
+      display: inline;
+      color: var(--teal);
+    }
+
+    .lead {
+      max-width: 650px;
+      margin: 18px 0 0;
+      color: #22314a;
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.58;
+      font-weight: 700;
+      overflow-wrap: break-word;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 620px;
+      margin-top: 26px;
+    }
+
+    .point {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 54px;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--navy);
+      font-size: 15px;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(6, 36, 92, 0.08);
+    }
+
+    .point-icon {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: var(--white);
+      background: var(--teal);
+      border-radius: 8px;
+      font-size: 18px;
+    }
+
+    .hero-art {
+      position: relative;
+      min-width: 0;
+    }
+
+    .hero-art img {
+      display: block;
+      width: 100%;
+      border: 1px solid rgba(220, 232, 239, 0.95);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-badge-row {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 14px 0 0 auto;
+    }
+
+    .hero-badge {
+      width: min(300px, 100%);
+      padding: 15px;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      border-radius: 8px;
+      box-shadow: 0 18px 48px rgba(6, 36, 92, 0.22);
+      text-align: left;
+    }
+
+    .hero-badge small {
+      display: block;
+      font-size: 13px;
+      font-weight: 800;
+      opacity: 0.86;
+    }
+
+    .hero-badge strong {
+      display: block;
+      margin-top: 3px;
+      font-size: clamp(20px, 3vw, 28px);
+      line-height: 1.1;
+      font-weight: 900;
+    }
+
+    section {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 54px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      max-width: 500px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 700;
+    }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .course-card {
+      min-height: 265px;
+      padding: 20px;
+      color: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 20px 46px rgba(6, 36, 92, 0.16);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .course-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -30px -50px auto;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .course-card.web {
+      background: linear-gradient(145deg, #06245c, #0d5aa4);
+    }
+
+    .course-card.design {
+      background: linear-gradient(145deg, #078681, #0fb3a6);
+    }
+
+    .course-card.marketing {
+      background: linear-gradient(145deg, #0b3d7d, #f5a524);
+    }
+
+    .course-card.content {
+      background: linear-gradient(145deg, #17346d, #e84b7b);
+    }
+
+    .course-icon {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: 8px;
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .course-card h3 {
+      margin: 22px 0 8px;
+      font-size: 25px;
+      line-height: 1.14;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .course-card p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.86);
+      line-height: 1.55;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .meta-row span {
+      padding: 5px 9px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .info-band {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .notice {
+      padding: clamp(24px, 4vw, 38px);
+      color: var(--white);
+      background:
+        linear-gradient(135deg, rgba(8, 157, 162, 0.95), rgba(6, 36, 92, 0.98)),
+        var(--navy);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .notice h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1.04;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .notice p {
+      max-width: 710px;
+      margin: 16px 0 0;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 18px;
+      line-height: 1.6;
+      font-weight: 700;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.13);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 8px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 27px;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 7px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .register-card {
+      display: grid;
+      align-content: center;
+      gap: 16px;
+      padding: 28px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 18px 48px rgba(6, 36, 92, 0.1);
+    }
+
+    .register-card h3 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 30px;
+      line-height: 1.12;
+      font-weight: 900;
+    }
+
+    .register-card ul {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .register-card li {
+      display: flex;
+      gap: 10px;
+      color: #26364e;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .register-card li::before {
+      content: "✓";
+      display: grid;
+      place-items: center;
+      flex: 0 0 24px;
+      width: 24px;
+      height: 24px;
+      color: var(--white);
+      background: var(--green);
+      border-radius: 50%;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step {
+      padding: 20px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 12px 30px rgba(6, 36, 92, 0.08);
+    }
+
+    .step strong {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      margin-bottom: 14px;
+      color: var(--white);
+      background: var(--navy);
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: 900;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    .cta {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 56px;
+      padding: clamp(24px, 4vw, 38px);
+      color: var(--white);
+      background: linear-gradient(135deg, var(--navy), #0b3d7d 54%, var(--teal));
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.12;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .cta p {
+      margin: 10px 0 0;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 17px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    .phone-box {
+      display: grid;
+      gap: 4px;
+      min-width: 280px;
+      padding: 18px 22px;
+      color: var(--navy);
+      background: var(--white);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .phone-box span {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .phone-box strong {
+      color: var(--teal);
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding: 24px clamp(18px, 5vw, 64px);
+      color: #334155;
+      background: var(--white);
+      border-top: 1px solid var(--line);
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .footer-logo {
+      width: auto;
+      height: 36px;
+      max-width: 180px;
+      object-fit: contain;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .info-band,
+      .cta {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 34px;
+      }
+
+      .course-grid,
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 10px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar {
+        position: static;
+        align-items: flex-start;
+        flex-direction: column;
+        padding-right: 18px;
+        padding-left: 18px;
+      }
+
+      .nav-actions,
+      .btn,
+      .phone-box {
+        width: 100%;
+      }
+
+      .brand-copy span {
+        white-space: normal;
+      }
+
+      .hero-points,
+      .course-grid,
+      .stats,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        width: calc(100vw - 36px);
+        max-width: calc(100vw - 36px);
+      }
+
+      .hero-badge {
+        width: 100%;
+      }
+
+      .hero-badge-row {
+        margin-top: 12px;
+      }
+
+      h1 {
+        font-size: 30px;
+        line-height: 1.22;
+        overflow-wrap: anywhere;
+      }
+
+      .lead {
+        display: block;
+        width: 320px;
+        max-width: calc(100vw - 36px);
+        font-size: 16px;
+        overflow-wrap: break-word;
+      }
+
+      .hero-copy {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .hero-art img {
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      section {
+        padding: 38px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Enterkey">
+        <img class="brand-logo" src="https://www.enterkeybd.com/enterkey-logo.png.png" alt="Enterkey logo">
+        <span class="brand-copy">
+          <span>মহাদেবপুর, নওগাঁ</span>
+        </span>
+      </a>
+      <nav class="nav-actions" aria-label="প্রধান লিংক">
+        <a class="btn btn-light" href="#courses">কোর্সসমূহ</a>
+        <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdHrLuasYpu5yue_5383I5pR_b3n_Vy3WouTvl8kaNEnEIJwg/viewform">রেজিস্ট্রেশন করুন</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="label-row">
+            <span class="pill"><strong>রেজিস্ট্রেশন চলছে</strong></span>
+            <span class="pill">স্থানীয় প্রশিক্ষণ</span>
+            <span class="pill">শুধুমাত্র নওগাঁ জেলার শিক্ষার্থীদের জন্য</span>
+          </div>
+          <h1 id="hero-title">মহাদেবপুরে শুরু হচ্ছে <span class="campaign-name">আত্মকর্মসংস্থান সৃষ্টিতে আইটি প্রশিক্ষণ কর্মসূচি</span></h1>
+          <p class="lead">ওয়েব ডেভেলপমেন্ট, গ্রাফিক্স ডিজাইন, ডিজিটাল মার্কেটিং ও কনটেন্ট ক্রিয়েশন শিখে নিজের ক্যারিয়ারকে এগিয়ে নিন। হাতে-কলমে ক্লাস, প্র্যাকটিক্যাল কাজ এবং মেন্টর সাপোর্ট এক জায়গায়।</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdHrLuasYpu5yue_5383I5pR_b3n_Vy3WouTvl8kaNEnEIJwg/viewform">এখনই নিবন্ধন করুন</a>
+            <a class="btn btn-light" href="#courses">কোর্স দেখুন</a>
+          </div>
+          <div class="hero-points" aria-label="প্রশিক্ষণের সুবিধা">
+            <div class="point"><span class="point-icon">⌁</span> ১০০% হাতে-কলমে প্রশিক্ষণ</div>
+            <div class="point"><span class="point-icon">◎</span> সার্টিফিকেট প্রদান</div>
+            <div class="point"><span class="point-icon">↗</span> ক্যারিয়ার গাইডলাইন</div>
+            <div class="point"><span class="point-icon">⌂</span> লোকেশন: মহাদেবপুর, নওগাঁ</div>
+          </div>
+        </div>
+
+        <div class="hero-art">
+          <img src="local-training-courses-banner.png" alt="ওয়েব ডেভেলপমেন্ট, গ্রাফিক্স ডিজাইন, ডিজিটাল মার্কেটিং ও কনটেন্ট ক্রিয়েশন প্রশিক্ষণের ব্যানার">
+          <div class="hero-badge-row" id="registration">
+            <div class="hero-badge">
+              <small>কোর্স ফি</small>
+              <strong>১০০% ফ্রি</strong>
+            </div>
+            <div class="hero-badge">
+              <small>মেন্টর সাপোর্ট</small>
+              <strong>ইন্ডাস্ট্রি এক্সপার্টদের সাথে সরাসরি যুক্ত হওয়ার সুযোগ</strong>
+            </div>
+            <div class="hero-badge">
+              <small>নতুন ব্যাচের ভর্তি</small>
+              <strong>চলমান</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="courses" aria-labelledby="courses-title">
+        <div class="section-head">
+          <h2 id="courses-title">যে চারটি স্কিল শেখানো হবে</h2>
+          <p>প্রতিটি কোর্সে থাকবে বেসিক থেকে প্র্যাকটিক্যাল কাজ, যাতে নতুন শিক্ষার্থীরাও ধাপে ধাপে আত্মবিশ্বাস তৈরি করতে পারে।</p>
+        </div>
+        <div class="course-grid">
+          <article class="course-card web">
+            <div class="course-icon">&lt;/&gt;</div>
+            <h3>ওয়েব ডেভেলপমেন্ট</h3>
+            <p>HTML, CSS, JavaScript এবং AI সহায়তায় ওয়েবসাইট তৈরির ব্যবহারিক প্রশিক্ষণ।</p>
+            <div class="meta-row">
+              <span>লাইভ প্র্যাকটিস</span>
+              <span>প্র্যাকটিক্যাল কাজ</span>
+            </div>
+          </article>
+          <article class="course-card design">
+            <div class="course-icon">✦</div>
+            <h3>গ্রাফিক্স ডিজাইন</h3>
+            <p>সোশ্যাল পোস্ট, ব্যানার, রং, লেআউট এবং ডিজাইন টুল ব্যবহারের হাতে-কলমে ক্লাস।</p>
+            <div class="meta-row">
+              <span>পোর্টফোলিও</span>
+              <span>ডিজাইন ল্যাব</span>
+            </div>
+          </article>
+          <article class="course-card marketing">
+            <div class="course-icon">◉</div>
+            <h3>ডিজিটাল মার্কেটিং</h3>
+            <p>সোশ্যাল মিডিয়া, ক্যাম্পেইন, কনটেন্ট প্ল্যান এবং অনলাইন প্রচারণার বাস্তব কৌশল।</p>
+            <div class="meta-row">
+              <span>ক্যাম্পেইন</span>
+              <span>গ্রোথ</span>
+            </div>
+          </article>
+          <article class="course-card content">
+            <div class="course-icon">▶</div>
+            <h3>কনটেন্ট ক্রিয়েশন</h3>
+            <p>ভিডিও আইডিয়া, স্ক্রিপ্ট, পোস্ট কনটেন্ট, এডিটিং ধারণা এবং প্রকাশনার পরিকল্পনা।</p>
+            <div class="meta-row">
+              <span>ভিডিও</span>
+              <span>স্টোরিটেলিং</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="training-title">
+        <div class="info-band">
+          <div class="notice">
+            <h2 id="training-title">স্থানীয় তরুণ-তরুণীদের জন্য দক্ষতা উন্নয়ন প্রশিক্ষণ</h2>
+            <p>মহাদেবপুর, নওগাঁ এলাকায় যারা ডিজিটাল কাজ শিখে নিজের ভবিষ্যৎ তৈরি করতে চান, তাদের জন্য এই প্রশিক্ষণ আয়োজন করা হয়েছে। ক্লাসে থাকবে সহজ ভাষায় শেখানো, নিয়মিত অনুশীলন এবং বাস্তব কাজের অভিজ্ঞতা।</p>
+            <div class="stats" aria-label="প্রশিক্ষণ তথ্য">
+              <div class="stat">
+                <strong>৪</strong>
+                <span>গুরুত্বপূর্ণ কোর্স</span>
+              </div>
+              <div class="stat">
+                <strong>১০০%</strong>
+                <span>প্র্যাকটিক্যাল ফোকাস</span>
+              </div>
+              <div class="stat">
+                <strong>চলছে</strong>
+                <span>রেজিস্ট্রেশন</span>
+              </div>
+            </div>
+          </div>
+          <aside class="register-card" aria-label="রেজিস্ট্রেশন তথ্য">
+            <h3>কেন এখনই যোগ দেবেন?</h3>
+            <ul>
+              <li>শুরু থেকে শেখার জন্য সহজ এবং বাংলা ভাষাভিত্তিক ক্লাস।</li>
+              <li>প্রতি কোর্সে বাস্তব কাজ ও ক্লাসওয়ার্ক থাকবে।</li>
+              <li>প্রশিক্ষণ শেষে সার্টিফিকেট ও ক্যারিয়ার সহায়তা।</li>
+              <li>সীমিত আসন, তাই আগে নিবন্ধন করলে অগ্রাধিকার পাবেন।</li>
+            </ul>
+            <a class="btn btn-primary" href="tel:01310573265">ফোন করুন</a>
+          </aside>
+        </div>
+      </section>
+
+      <section aria-labelledby="steps-title">
+        <div class="section-head">
+          <h2 id="steps-title">ভর্তির সহজ ধাপ</h2>
+          <p>আপনি নতুন হলেও সমস্যা নেই। প্রশিক্ষণ টিম আপনাকে বিষয় নির্বাচন থেকে ক্লাস শুরু পর্যন্ত গাইড করবে।</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <strong>১</strong>
+            <h3>যোগাযোগ</h3>
+            <p>ফোন করে আপনার আগ্রহের কোর্স জানিয়ে দিন।</p>
+          </article>
+          <article class="step">
+            <strong>২</strong>
+            <h3>কোর্স নির্বাচন</h3>
+            <p>আপনার লক্ষ্য অনুযায়ী উপযুক্ত স্কিল বেছে নিন।</p>
+          </article>
+          <article class="step">
+            <strong>৩</strong>
+            <h3>রেজিস্ট্রেশন</h3>
+            <p>নাম, মোবাইল নম্বর এবং লোকেশন দিয়ে নিবন্ধন সম্পন্ন করুন।</p>
+          </article>
+          <article class="step">
+            <strong>৪</strong>
+            <h3>ক্লাস শুরু</h3>
+            <p>মহাদেবপুর, নওগাঁতে সরাসরি ক্লাসে অংশ নিন।</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="cta" aria-labelledby="cta-title">
+        <div>
+          <h2 id="cta-title">আপনার ডিজিটাল স্কিল শেখার যাত্রা আজই শুরু হোক</h2>
+          <p>রেজিস্ট্রেশন চলছে। ওয়েব ডেভেলপমেন্ট, গ্রাফিক্স ডিজাইন, ডিজিটাল মার্কেটিং ও কনটেন্ট ক্রিয়েশন কোর্সের জন্য এখনই যোগাযোগ করুন।</p>
+        </div>
+        <a class="phone-box" href="tel:01310573265" aria-label="ফোন করুন 01310573265">
+          <span>যোগাযোগ</span>
+          <strong>01310573265</strong>
+        </a>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <img class="footer-logo" src="https://www.enterkeybd.com/enterkey-logo.png.png" alt="Enterkey logo">
+      <span>স্থানীয় প্রশিক্ষণ কেন্দ্র: মহাদেবপুর, নওগাঁ · রেজিস্ট্রেশন চলমান</span>
+    </footer>
+  </div>
+</body>
+</html>
